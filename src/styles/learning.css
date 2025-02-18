@@ -1,0 +1,562 @@
+/* src/styles/learning.css */
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #DADADA;
+    border: 1px solid #A50021;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A50021;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #840019;
+}
+
+.learning-container {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #DADADA;
+    color: #A50021;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.learning-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #A50021;
+    color: #DADADA;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: none;
+    border: 2px solid #DADADA;
+    color: #DADADA;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 30px;
+    min-width: 140px;
+    height: 45px;
+    background-color: #DADADA;
+    color: #A50021;
+    border: 1px solid #A50021;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #A50021;
+    color: #DADADA;
+    border-color: #DADADA;
+}
+
+.controls {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #DADADA;
+    border-bottom: 1px solid #A50021;
+    z-index: 999;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.search-bar {
+    flex: 1;
+    position: relative;
+}
+
+.search-bar svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A50021;
+    opacity: 0.7;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #A50021;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #A50021;
+    background-color: #DADADA;
+}
+
+.courses-grid {
+    padding: 160px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.course-card {
+    background-color: #DADADA;
+    color: #A50021;
+    border: 1px solid #A50021;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.course-content {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+    align-items: center;
+}
+
+.course-main-info {
+    flex: 1;
+}
+
+.course-main-info h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.course-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #DADADA;
+    margin-top: 10px;
+}
+
+.platform-badge img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.progress-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: rgba(165, 0, 33, 0.05);
+    border-radius: 8px;
+    min-width: 300px;
+}
+
+.circular-progress {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.progress-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-inner {
+    width: 60px;
+    height: 60px;
+    background-color: #DADADA;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-value {
+    color: #A50021;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.progress-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hours-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.hours-counter .completed {
+    color: #A50021;
+    font-weight: bold;
+}
+
+.hours-counter .separator {
+    color: #A50021;
+    opacity: 0.5;
+}
+
+.hours-counter .total {
+    color: #A50021;
+    opacity: 0.7;
+}
+
+.hours-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #DADADA;
+    border: 1px solid #A50021;
+    border-radius: 2px;
+    outline: none;
+}
+
+.hours-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #A50021;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hours-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.course-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.edit-button,
+.delete-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    background-color: #A50021;
+    border: none;
+    color: #DADADA;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #A50021;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(218, 218, 218, 0.1);
+}
+
+.modal-header h2 {
+    color: #DADADA;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modal-content form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #DADADA;
+    color: #A50021;
+    font-size: 16px;
+}
+
+.form-group input::placeholder {
+    color: #A50021;
+    opacity: 0.7;
+}
+
+.platform-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.platform-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #DADADA;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.platform-option img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.platform-option span,
+.platform-option .check-icon {
+    display: none;
+}
+
+.platform-option.selected {
+    background-color: #A50021;
+}
+
+.hours-input-container {
+    background-color: #DADADA;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.hours-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.completed-hours {
+    color: #A50021;
+    font-weight: bold;
+}
+
+.separator {
+    color: #A50021;
+    opacity: 0.5;
+}
+
+.total-hours {
+    color: #A50021;
+    opacity: 0.7;
+}
+
+.hours-label {
+    margin-left: auto;
+    font-size: 14px;
+    color: #A50021;
+    opacity: 0.7;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.primary-button,
+.secondary-button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.primary-button {
+    background-color: #A50021;
+    color: #DADADA;
+    border: none;
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: #DADADA;
+    border: 1px solid #DADADA;
+}
+
+.primary-button:hover {
+    background-color: transparent;
+    color: #DADADA;
+    border: 1px solid #DADADA;
+}
+
+.secondary-button:hover {
+    background-color: #DADADA;
+    color: #A50021;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.confirm-dialog {
+    padding: 20px;
+    text-align: center;
+}
+
+.confirm-dialog h2 {
+    color: #DADADA;
+    margin: 0 0 15px 0;
+}
+
+.confirm-dialog p {
+    color: #DADADA;
+    margin: 0 0 20px 0;
+}
+
+.delete-confirm:hover {
+    background-color: #DADADA;
+    color: #A50021;
+}
+
+.error-message {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 15px 20px;
+    background-color: #A50021;
+    color: #DADADA;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+}
+
+.error-message button {
+    background: none;
+    border: none;
+    color: #DADADA;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .progress-section {
+        min-width: auto;
+    }
+
+    .platform-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .platform-option {
+        padding: 15px;
+    }
+
+    .platform-option img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .course-actions {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        margin: 0;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}

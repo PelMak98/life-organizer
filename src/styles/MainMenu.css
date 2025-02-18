@@ -1,0 +1,39 @@
+/* src/styles/MainMenu.css */
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height */
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 20px;
+  width: 90%; /* Adjust the width */
+  max-width: 600px; /* Limit max width */
+}
+
+.menu-item {
+  width: 100px; /* Set square shape */
+  height: 100px; /* Equal to width */
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.menu-item a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu-item:hover {
+  background-color: #555;
+  transform: scale(1.1); /* Slight zoom effect */
+}

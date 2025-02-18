@@ -1,0 +1,100 @@
+body {
+  background-color: #00594f; /* Changed to #00594f */
+  color: #cfff04; /* Changed to #cfff04 */
+  font-family: Arial, sans-serif;
+}
+
+.goal-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #FFFF00; /* Changed to #00594f */
+  color: #cfff04; /* Changed to #cfff04 */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.goal-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #03689B; /* Keep blue */
+}
+
+.goal-form,
+.status-update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-form input,
+.goal-form textarea,
+.goal-form select,
+.status-update-form select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #03689B; /* Keep blue */
+  border-radius: 5px;
+  background: #FED704; /* Keep yellow */
+  color: #03689B; /* Keep blue */
+}
+
+.goal-submit-btn,
+.goal-status-btn,
+.update-status-btn,
+.return-btn {
+  background: #FED704; /* Keep yellow */
+  color: #03689B; /* Keep blue */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.goal-submit-btn:hover,
+.goal-status-btn:hover,
+.update-status-btn:hover,
+.return-btn:hover {
+  background: #FFC107; /* Slightly darker yellow */
+}
+
+.goal-list {
+  margin-top: 20px;
+  padding: 15px;
+  background: #FED704; /* Keep yellow */
+  color: #03689B; /* Keep blue */
+  border-radius: 8px;
+}
+
+.goal-list h2 {
+  color: #03689B; /* Keep blue */
+}
+
+.goal-item {
+  background: #03689b; /* Keep blue */
+  padding: 10px;
+  border-left: 5px solid #03689B; /* Keep blue */
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #fed704; /* Yellow text */
+}
+
+.edit-btn,
+.delete-btn {
+  background: #03689B; /* Keep blue */
+  color: #fed704; /* Yellow text */
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  background: #024f6b;
+}

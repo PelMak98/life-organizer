@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+import "C:\Users\pelko\Documents\ΠΕΛΟΠΙΔΑΣ\life_organizer\my-organizer-app\src\styles";
+
+const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+const Schedule = () => {
+  const [events, setEvents] = useState({});
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [newEvent, setNewEvent] = useState({ time: "", title: "", recurring: false });
+
+  const handleAddEvent = () => {
+    if (!newEvent.title || !newEvent.time) return;
+    setEvents((prev) => ({
+      ...prev,
+      [selectedDay]: [...(prev[selectedDay] || []), newEvent],
+    }));
+    setNewEvent({ time: "", title: "", recurring: false });
+    setSelectedDay(null);
+  };
+
+  return (
+    <div className="schedule-container">
+      <h2>Weekly Schedule</h2>
+      <div className="week-view">
+        {daysOfWeek.map((day) => (
+          <div key={day} className="day" onClick={() => setSelectedDay(day)}>
+            <h3>{day}</h3>
+            {events[day]?.map((event, index) => (
+              <div key={index} className="event">
+                <span>{event.time} - {event.title}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {selectedDay && (
+        <div className="event-modal">
+          <h3>Add Event for {selectedDay}</h3>
+          <input
+            type="time"
+            value={newEvent.time}
+            onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Event Title"
+            value={newEvent.title}
+            onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+          />
+          <label>
+            <input
+              type="checkbox"
+              checked={newEvent.recurring}
+              onChange={(e) => setNewEvent({ ...newEvent, recurring: e.target.checked })}
+            />
+            Recurring Event
+          </label>
+          <button onClick={handleAddEvent}>Add Event</button>
+          <button onClick={() => setSelectedDay(null)}>Cancel</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Schedule;

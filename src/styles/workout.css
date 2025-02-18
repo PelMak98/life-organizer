@@ -1,0 +1,303 @@
+/* src/styles/workout.css */
+.workout-container {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #36454F;
+    color: #FFFF00;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.workout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #36454F;
+    color: #FFFF00;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: none;
+    border: 2px solid #FFFF00;
+    color: #FFFF00;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 30px;
+    min-width: 140px;
+    height: 45px;
+    background-color: #FFFF00;
+    color: #36454F;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.subscription-status {
+    display: flex;
+    gap: 20px;
+    padding: 100px 20px 20px 20px;
+}
+
+.subscription-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #36454F;
+    color: #FFFF00;
+    border-radius: 8px;
+}
+
+.subscription-card svg {
+    font-size: 30px;
+}
+
+.subscription-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sessions-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.workouts-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    height: calc(100vh - 200px);
+}
+
+.workouts-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.workouts-list::-webkit-scrollbar-track {
+    background: #FFFF00;
+}
+
+.workouts-list::-webkit-scrollbar-thumb {
+    background: #36454F;
+    border-radius: 4px;
+}
+
+.workout-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #FFFF00;
+    color: #36454F;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid #36454F;
+}
+
+.workout-icon {
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(54, 69, 79, 0.1);
+    border-radius: 8px;
+}
+
+.workout-info {
+    flex: 1;
+}
+
+.workout-description {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.workout-details {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.workout-details span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.delete-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: rgba(54, 69, 79, 0.1);
+    border: none;
+    color: #36454F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.delete-button:hover {
+    background-color: #36454F;
+    color: #FFFF00;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(54, 69, 79, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-wrapper {
+    background-color: #36454F !important;
+    width: 90%;
+    max-width: 440px;
+    border-radius: 8px;
+}
+
+.modal-content {
+    background-color: #36454F !important;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 0, 0.1);
+}
+
+.modal-header h2 {
+    color: #FFFF00;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modal-content form {
+    padding: 20px;
+    background-color: #36454F !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FFFF00;
+    color: #36454F;
+    font-size: 16px;
+}
+
+.form-group input::placeholder {
+    color: #36454F;
+    opacity: 0.7;
+}
+
+.type-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.switch-option {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 0, 0.1);
+    border: 1px solid #FFFF00;
+    color: #FFFF00;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.switch-option.active {
+    background-color: #FFFF00;
+    color: #36454F;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.primary-button,
+.secondary-button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.primary-button {
+    background-color: #FFFF00;
+    color: #36454F;
+    border: none;
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: #FFFF00;
+    border: 1px solid #FFFF00;
+}
+
+@media (max-width: 768px) {
+    .subscription-status {
+        flex-direction: column;
+    }
+
+    .workout-details {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .modal-wrapper {
+        width: 95%;
+        margin: 10px;
+    }
+}
