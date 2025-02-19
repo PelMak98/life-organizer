@@ -1,21 +1,29 @@
-// Food.jsx
 import React, { useState, useEffect } from "react";
 import "../styles/food.css";
 
 const Food = ({ selectedWeek, onWeekChange, onReturn }) => {
   const [dates, setDates] = useState([]);
-  const [meals, setMeals] = useState({});
   const [currentMealDay, setCurrentMealDay] = useState(null);
   const [mealInput, setMealInput] = useState("");
-  const [mealTime, setMealTime] = useState("09:00");
   const [mealType, setMealType] = useState("breakfast");
   const [mealToEdit, setMealToEdit] = useState(null);
 
+  // Initialize meals from localStorage or empty object
+  const [meals, setMeals] = useState(() => {
+    const savedMeals = localStorage.getItem('meals');
+    return savedMeals ? JSON.parse(savedMeals) : {};
+  });
+
+  // Save meals to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('meals', JSON.stringify(meals));
+  }, [meals]);
+
   const mealTypes = [
-    { id: 'breakfast', name: 'Breakfast', defaultTime: '08:00' },
-    { id: 'lunch', name: 'Lunch', defaultTime: '13:00' },
-    { id: 'dinner', name: 'Dinner', defaultTime: '20:00' },
-    { id: 'snacks', name: 'Snacks', defaultTime: '16:00' }
+    { id: 'breakfast', name: 'Breakfast' },
+    { id: 'lunch', name: 'Lunch' },
+    { id: 'dinner', name: 'Dinner' },
+    { id: 'snacks', name: 'Snacks' }
   ];
 
   const getWeekDates = (date) => {
@@ -41,43 +49,69 @@ const Food = ({ selectedWeek, onWeekChange, onReturn }) => {
     setCurrentMealDay(day);
     setMealType(type);
     setMealInput("");
-    setMealTime(mealTypes.find(t => t.id === type).defaultTime);
+    setMealToEdit(null);
   };
 
   const handleMealSubmit = () => {
-    if (!mealInput) return;
+    if (!mealInput.trim()) return;
+    
     const dayKey = currentMealDay.toLocaleDateString();
-    setMeals(prevMeals => ({
-      ...prevMeals,
-      [dayKey]: {
-        ...prevMeals[dayKey],
-        [mealType]: [
-          ...((prevMeals[dayKey]?.[mealType] || [])),
-          { text: mealInput, time: mealTime }
-        ]
+    
+    setMeals(prevMeals => {
+      const newMeals = { ...prevMeals };
+      
+      if (!newMeals[dayKey]) {
+        newMeals[dayKey] = {};
       }
-    }));
+      
+      if (!newMeals[dayKey][mealType]) {
+        newMeals[dayKey][mealType] = [];
+      }
+
+      if (mealToEdit) {
+        // Edit existing meal
+        newMeals[dayKey][mealType][mealToEdit.index] = { text: mealInput.trim() };
+      } else {
+        // Add new meal
+        newMeals[dayKey][mealType].push({ text: mealInput.trim() });
+      }
+
+      return newMeals;
+    });
+
     setMealInput("");
     setCurrentMealDay(null);
+    setMealToEdit(null);
   };
 
   const handleMealDelete = (day, type, index) => {
     const dayKey = day.toLocaleDateString();
-    setMeals(prevMeals => ({
-      ...prevMeals,
-      [dayKey]: {
-        ...prevMeals[dayKey],
-        [type]: prevMeals[dayKey][type].filter((_, i) => i !== index)
+    
+    setMeals(prevMeals => {
+      const newMeals = { ...prevMeals };
+      
+      if (newMeals[dayKey]?.[type]) {
+        // Remove the meal at the specified index
+        newMeals[dayKey][type] = newMeals[dayKey][type].filter((_, i) => i !== index);
+        
+        // Clean up empty arrays and objects
+        if (newMeals[dayKey][type].length === 0) {
+          delete newMeals[dayKey][type];
+        }
+        
+        if (Object.keys(newMeals[dayKey]).length === 0) {
+          delete newMeals[dayKey];
+        }
       }
-    }));
-    setMealToEdit(null);
+      
+      return newMeals;
+    });
   };
 
   const handleMealEdit = (day, type, index) => {
     const dayKey = day.toLocaleDateString();
     const mealToEdit = meals[dayKey][type][index];
     setMealInput(mealToEdit.text);
-    setMealTime(mealToEdit.time);
     setMealType(type);
     setCurrentMealDay(day);
     setMealToEdit({ day, type, index });
@@ -90,7 +124,7 @@ const Food = ({ selectedWeek, onWeekChange, onReturn }) => {
   };
   
   const formatDayName = (date) => {
-    const options = { weekday: "short" };
+    const options = { weekday: "long" };
     return new Intl.DateTimeFormat("en-GB", options).format(date);
   };
 
@@ -122,27 +156,31 @@ const Food = ({ selectedWeek, onWeekChange, onReturn }) => {
                       +
                     </button>
                   </div>
-                  <ul className="meal-list">
-                    {meals[date.toLocaleDateString()]?.[type.id]?.map((meal, i) => (
-                      <li key={i} className="meal-item">
-                        <span>{meal.text} at {meal.time}</span>
-                        <div className="meal-actions">
-                          <button
-                            onClick={() => handleMealEdit(date, type.id, i)}
-                            className="edit-btn"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleMealDelete(date, type.id, i)}
-                            className="delete-btn"
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="meal-content">
+                    <ul className="meal-list">
+                      {meals[date.toLocaleDateString()]?.[type.id]?.map((meal, i) => (
+                        <li key={i} className="meal-item">
+                          <span>{meal.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {meals[date.toLocaleDateString()]?.[type.id]?.length > 0 && (
+                      <div className="meal-block-footer">
+                        <button
+                          onClick={() => handleMealEdit(date, type.id, 0)}
+                          className="edit-btn"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleMealDelete(date, type.id, 0)}
+                          className="delete-btn"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -152,21 +190,25 @@ const Food = ({ selectedWeek, onWeekChange, onReturn }) => {
 
       {currentMealDay && (
         <div className="meal-input-container">
-          <h3>Add {mealTypes.find(t => t.id === mealType).name}</h3>
+          <h3>{mealToEdit ? 'Edit' : 'Add'} {mealTypes.find(t => t.id === mealType).name}</h3>
           <input
             type="text"
             value={mealInput}
             onChange={(e) => setMealInput(e.target.value)}
             placeholder="Enter meal..."
-          />
-          <input
-            type="time"
-            value={mealTime}
-            onChange={(e) => setMealTime(e.target.value)}
+            autoFocus
           />
           <div className="modal-buttons">
-            <button onClick={handleMealSubmit}>Add Meal</button>
-            <button onClick={() => setCurrentMealDay(null)}>Cancel</button>
+            <button onClick={handleMealSubmit}>
+              {mealToEdit ? 'Save' : 'Add'} Meal
+            </button>
+            <button onClick={() => {
+              setCurrentMealDay(null);
+              setMealToEdit(null);
+              setMealInput("");
+            }}>
+              Cancel
+            </button>
           </div>
         </div>
       )}

@@ -1,18 +1,19 @@
-/* food.css */
 .food-planner {
   display: flex;
   flex-direction: column;
   height: 100vh;
   background-color: #003366;
-  padding: 16px;
+  padding: 8px;
   box-sizing: border-box;
+  width: 100%;
+  margin: 0;
 }
 
 .food-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 16px;
+  padding: 5px;
+  margin-bottom: 8px;
 }
 
 .food-header button {
@@ -27,53 +28,67 @@
 
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 16px;
-  height: calc(100vh - 80px);
-  overflow: hidden;
-  padding: 0 8px;
+  grid-template-columns: repeat(7, 1.5fr); /* Αυξημένο πλάτος κατά 1.5 */
+  gap: 6px;
+  height: calc(100vh - 70px);
+  overflow-x: auto; /* Επιτρέπει το οριζόντιο scroll */
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .day-column {
-  background-color: #f5f5f5;
+  background-color: #003366;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .date-header {
-  background-color: #003366;
-  color: #98ff98;
-  padding: 12px 8px;
+  background-color: #98ff98;
+  color: #003366;
+  padding: 8px 4px;
   border-radius: 6px 6px 0 0;
   text-align: center;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .day-name-text {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
 }
 
 .date-number {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .meals-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 8px;
+  gap: 8px;
   overflow-y: auto;
 }
 
 .meal-block {
   background-color: #98ff98;
   border-radius: 8px;
-  padding: 12px;
-  height: calc((100vh - 220px) / 4);
+  padding: 8px;
+  min-height: 120px;
+  max-height: 120px;
   display: flex;
   flex-direction: column;
 }
@@ -93,8 +108,8 @@
 }
 
 .add-meal-button {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background-color: #003366;
   color: #98ff98;
   border: none;
@@ -104,6 +119,14 @@
   justify-content: center;
   cursor: pointer;
   font-size: 16px;
+}
+
+.meal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .meal-list {
@@ -121,24 +144,40 @@
   margin-bottom: 5px;
   border-radius: 4px;
   font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.meal-actions {
-  display: flex;
-  gap: 4px;
+.meal-item span {
+  display: block;
+  word-break: break-word;
 }
 
-.meal-actions button {
-  padding: 2px 6px;
-  font-size: 10px;
-  background-color: transparent;
-  border: 1px solid #98ff98;
+.meal-block-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+  margin-top: auto;
+}
+
+.meal-block-footer button {
+  padding: 4px 8px;
+  font-size: 11px;
+  background-color: #003366;
+  border: none;
   color: #98ff98;
   border-radius: 3px;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.meal-block-footer button:hover {
+  opacity: 0.9;
+}
+
+.edit-btn, .delete-btn {
+  background-color: #003366;
 }
 
 .meal-input-container {
@@ -186,12 +225,38 @@
   font-weight: 500;
 }
 
+@media (max-width: 1200px) {
+  .food-planner {
+    padding: 4px;
+  }
+  
+  .food-grid {
+    gap: 4px;
+  }
+  
+  .meals-wrapper {
+    padding: 6px;
+  }
+  
+  .meal-block {
+    padding: 6px;
+  }
+  
+  .day-name-text {
+    font-size: 12px;
+  }
+  
+  .date-header {
+    padding: 6px 2px;
+  }
+}
+
 @media (max-width: 1400px) {
   .food-grid {
     overflow-x: auto;
   }
   
   .day-column {
-    min-width: 200px;
+    min-width: 270px; /* Αυξημένο κατά 1.5 από το αρχικό 180px */
   }
 }

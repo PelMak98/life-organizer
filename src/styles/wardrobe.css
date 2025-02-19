@@ -1,4 +1,4 @@
-/* wardrobe.css - ΠΛΗΡΗΣ ΚΩΔΙΚΑΣ ΧΩΡΙΣ OUTFIT MAKER */
+/* wardrobe.css */
 .wardrobe-container {
     min-height: 100vh;
     width: 100vw;
@@ -22,8 +22,9 @@
 }
 
 .wardrobe-header h1 {
-    margin: 0;
+    margin: 0 auto;
     font-size: 24px;
+    text-align: center;
 }
 
 .back-button {
@@ -47,28 +48,30 @@
 }
 
 /* Grid Layouts */
-.seasons-grid {
+.seasons-grid, .categories-grid, .subcategories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
     height: calc(100vh - 120px);
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .categories-grid {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
-    height: calc(100vh - 120px);
 }
 
 .subcategories-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 300px);
     gap: 20px;
+    width: fit-content;
+    margin: 0 auto;
     padding: 20px;
 }
+
 
 /* Cards */
 .season-card,
@@ -84,6 +87,9 @@
     cursor: pointer;
     transition: transform 0.2s;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
 }
 
 .season-card:hover,
@@ -102,6 +108,8 @@
 
 /* Items View */
 .items-view {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -135,10 +143,12 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    justify-items: center;
 }
 
 .item-card {
@@ -147,19 +157,22 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .item-image {
     width: 250px;
     height: 250px;
-    margin: 20px auto;  /* Προσθήκη ίσων margins πάνω-κάτω */
+    margin: 20px auto;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
     padding: 10px;
-    border: 1px solid rgba(46, 26, 71, 0.2);  /* Απαλό purple border */
+    border: 1px solid rgba(46, 26, 71, 0.2);
 }
 
 .item-image img {
@@ -170,7 +183,7 @@
 
 .item-details {
     padding: 20px;
-    margin-top: 20px;  /* Ίδιο margin με την εικόνα */
+    margin-top: 20px;
     background-color: #2e1a47;
     color: #e7e7e7;
 }
@@ -248,6 +261,7 @@
 .modal-content h2 {
     margin: 0 0 20px 0;
     color: #2e1a47;
+    text-align: center;
 }
 
 .form-group {
@@ -290,7 +304,7 @@
 }
 
 .image-preview {
-    margin-top: 12px;
+    margin: 12px auto;
     width: 250px;
     height: 250px;
     border-radius: 4px;
@@ -330,19 +344,6 @@
     color: #333;
 }
 
-/* Force Landscape */
-@media (orientation: portrait) {
-    .wardrobe-container {
-        transform: rotate(90deg);
-        transform-origin: top left;
-        width: 100vh;
-        height: 100vw;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .wardrobe-container {
@@ -360,5 +361,25 @@
     
     .items-grid {
         grid-template-columns: 1fr;
+    }
+
+    .seasons-grid,
+    .categories-grid,
+    .subcategories-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* Force Landscape */
+@media (orientation: portrait) {
+    .wardrobe-container {
+        transform: rotate(90deg);
+        transform-origin: top left;
+        width: 100vh;
+        height: 100vw;
+        position: absolute;
+        top: 100%;
+        left: 0;
     }
 }

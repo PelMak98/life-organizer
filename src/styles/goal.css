@@ -1,100 +1,186 @@
-body {
-  background-color: #00594f; /* Changed to #00594f */
-  color: #cfff04; /* Changed to #cfff04 */
-  font-family: Arial, sans-serif;
+/* goal.css */
+.goal-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #36454f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
 }
 
-.goal-container {
+.return-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #FFFF00;
+  color: #36454f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.goal-form-section {
   width: 90%;
   max-width: 600px;
-  margin: 20px auto;
+  margin: 80px auto 20px;
   padding: 20px;
-  background: #FFFF00; /* Changed to #00594f */
-  color: #cfff04; /* Changed to #cfff04 */
+  background: #FFFF00;
+  color: #36454f;
   border-radius: 8px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .goal-title {
   font-size: 24px;
-  margin-bottom: 15px;
-  color: #03689B; /* Keep blue */
+  margin-bottom: 20px;
+  color: #36454f;
+  text-align: center;
 }
 
-.goal-form,
-.status-update-form {
+.goal-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+}
+
+.goal-form label {
+  font-weight: bold;
+  color: #36454f;
 }
 
 .goal-form input,
 .goal-form textarea,
-.goal-form select,
-.status-update-form select {
+.goal-form select {
   width: 100%;
-  padding: 10px;
-  border: 2px solid #03689B; /* Keep blue */
-  border-radius: 5px;
-  background: #FED704; /* Keep yellow */
-  color: #03689B; /* Keep blue */
+  padding: 12px;
+  border: 2px solid #36454f;
+  border-radius: 4px;
+  background: #FFFF00;
+  color: #36454f;
 }
 
-.goal-submit-btn,
-.goal-status-btn,
-.update-status-btn,
-.return-btn {
-  background: #FED704; /* Keep yellow */
-  color: #03689B; /* Keep blue */
+.goal-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.goal-submit-btn {
+  background: #36454f;
+  color: #FFFF00;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   transition: 0.3s;
 }
 
-.goal-submit-btn:hover,
-.goal-status-btn:hover,
-.update-status-btn:hover,
-.return-btn:hover {
-  background: #FFC107; /* Slightly darker yellow */
+.goal-submit-btn:hover {
+  opacity: 0.9;
 }
 
-.goal-list {
-  margin-top: 20px;
-  padding: 15px;
-  background: #FED704; /* Keep yellow */
-  color: #03689B; /* Keep blue */
+.goal-list-section {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #36454f;
   border-radius: 8px;
 }
 
-.goal-list h2 {
-  color: #03689B; /* Keep blue */
+.goal-list-section h2 {
+  color: #FFFF00;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .goal-item {
-  background: #03689b; /* Keep blue */
-  padding: 10px;
-  border-left: 5px solid #03689B; /* Keep blue */
+  background: #36454f;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #FFFF00;
+  border-radius: 4px;
+  color: #FFFF00;
+}
+
+.goal-item h3 {
   margin-bottom: 10px;
-  border-radius: 5px;
-  color: #fed704; /* Yellow text */
+  color: #FFFF00;
+}
+
+.goal-item p {
+  margin: 5px 0;
+  color: #FFFF00;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .edit-btn,
 .delete-btn {
-  background: #03689B; /* Keep blue */
-  color: #fed704; /* Yellow text */
+  background: #FFFF00;
+  color: #36454f;
   border: none;
-  padding: 5px 10px;
-  margin: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
+  font-weight: bold;
 }
 
 .edit-btn:hover,
 .delete-btn:hover {
-  background: #024f6b;
+  opacity: 0.9;
+}
+
+.goal-edit-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #36454f;
+  border: 1px solid #FFFF00;
+  border-radius: 4px;
+}
+
+.goal-edit-section h3 {
+  color: #FFFF00;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.goal-edit-section select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #FFFF00;
+  color: #36454f;
+  border: none;
+  border-radius: 4px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: transparent;
+  color: #FFFF00;
+  border: 1px solid #FFFF00;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 0, 0.1);
 }

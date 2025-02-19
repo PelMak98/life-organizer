@@ -1,5 +1,4 @@
-// Wardrobe.jsx - ΠΛΗΡΗΣ ΚΩΔΙΚΑΣ ΧΩΡΙΣ OUTFIT MAKER
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaPlus, FaTrash, FaEdit } from "react-icons/fa";
 import "../styles/wardrobe.css";
 
@@ -29,7 +28,10 @@ const processImage = (file) => {
             const offsetY = (size - scaledHeight) / 2;
 
             ctx.drawImage(img, offsetX, offsetY, scaledWidth, scaledHeight);
-            canvas.toBlob(resolve, 'image/jpeg', 0.9);
+            
+            // Convert to base64
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            resolve(dataUrl);
         };
 
         img.src = URL.createObjectURL(file);
@@ -37,11 +39,28 @@ const processImage = (file) => {
 };
 
 const Wardrobe = ({ onReturn }) => {
-    const [currentView, setCurrentView] = useState('seasons');
-    const [selectedSeason, setSelectedSeason] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const [selectedSubCategory, setSelectedSubCategory] = useState(null);
-    const [items, setItems] = useState([]);
+    // Initialize states with localStorage data
+    const [items, setItems] = useState(() => {
+        const savedItems = localStorage.getItem('wardrobeItems');
+        return savedItems ? JSON.parse(savedItems) : [];
+    });
+
+    const [currentView, setCurrentView] = useState(() => 
+        localStorage.getItem('wardrobeView') || 'seasons'
+    );
+
+    const [selectedSeason, setSelectedSeason] = useState(() =>
+        localStorage.getItem('wardrobeSeason') || null
+    );
+
+    const [selectedCategory, setSelectedCategory] = useState(() =>
+        localStorage.getItem('wardrobeCategory') || null
+    );
+
+    const [selectedSubCategory, setSelectedSubCategory] = useState(() =>
+        localStorage.getItem('wardrobeSubCategory') || null
+    );
+
     const [showForm, setShowForm] = useState(false);
     const [editingItem, setEditingItem] = useState(null);
     const [processedImage, setProcessedImage] = useState(null);
@@ -55,6 +74,39 @@ const Wardrobe = ({ onReturn }) => {
         damage: false,
         image: null
     });
+
+    // Save to localStorage when data changes
+    useEffect(() => {
+        localStorage.setItem('wardrobeItems', JSON.stringify(items));
+    }, [items]);
+
+    useEffect(() => {
+        localStorage.setItem('wardrobeView', currentView);
+    }, [currentView]);
+
+    useEffect(() => {
+        if (selectedSeason) {
+            localStorage.setItem('wardrobeSeason', selectedSeason);
+        } else {
+            localStorage.removeItem('wardrobeSeason');
+        }
+    }, [selectedSeason]);
+
+    useEffect(() => {
+        if (selectedCategory) {
+            localStorage.setItem('wardrobeCategory', selectedCategory);
+        } else {
+            localStorage.removeItem('wardrobeCategory');
+        }
+    }, [selectedCategory]);
+
+    useEffect(() => {
+        if (selectedSubCategory) {
+            localStorage.setItem('wardrobeSubCategory', selectedSubCategory);
+        } else {
+            localStorage.removeItem('wardrobeSubCategory');
+        }
+    }, [selectedSubCategory]);
 
     const resetForm = () => {
         setFormData({
@@ -73,13 +125,20 @@ const Wardrobe = ({ onReturn }) => {
     const handleBack = () => {
         if (selectedSubCategory) {
             setSelectedSubCategory(null);
+            localStorage.removeItem('wardrobeSubCategory');
         } else if (currentView === 'subcategories') {
             setCurrentView('categories');
             setSelectedCategory(null);
+            localStorage.removeItem('wardrobeCategory');
         } else if (currentView === 'categories') {
             setCurrentView('seasons');
             setSelectedSeason(null);
+            localStorage.removeItem('wardrobeSeason');
         } else {
+            localStorage.removeItem('wardrobeView');
+            localStorage.removeItem('wardrobeSeason');
+            localStorage.removeItem('wardrobeCategory');
+            localStorage.removeItem('wardrobeSubCategory');
             onReturn();
         }
     };
@@ -87,9 +146,9 @@ const Wardrobe = ({ onReturn }) => {
     const handleImageUpload = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            const processedBlob = await processImage(file);
-            setProcessedImage(URL.createObjectURL(processedBlob));
-            setFormData({ ...formData, image: processedBlob });
+            const base64Image = await processImage(file);
+            setProcessedImage(base64Image);
+            setFormData({ ...formData, image: base64Image });
         }
     };
 
@@ -126,9 +185,7 @@ const Wardrobe = ({ onReturn }) => {
             damage: item.damage,
             image: item.image
         });
-        if (item.image) {
-            setProcessedImage(URL.createObjectURL(item.image));
-        }
+        setProcessedImage(item.image);
         setShowForm(true);
     };
 
@@ -173,7 +230,7 @@ const Wardrobe = ({ onReturn }) => {
     );
 
     const renderSubCategories = () => (
-        <div className="content-container">
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="subcategories-grid">
                 {subCategories.map(sub => (
                     <div 
@@ -211,7 +268,7 @@ const Wardrobe = ({ onReturn }) => {
                             {item.image && (
                                 <div className="item-image">
                                     <img 
-                                        src={URL.createObjectURL(item.image)} 
+                                        src={item.image}
                                         alt={item.brand}
                                     />
                                 </div>
