@@ -3,7 +3,6 @@ import "../styles/calendar.css";
 
 const Calendar = ({ selectedWeek, onWeekChange, onReturn }) => {
   const [dates, setDates] = useState([]);
-  // Initialize tasks from localStorage
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('calendar-tasks');
     return savedTasks ? JSON.parse(savedTasks) : {};
@@ -13,7 +12,13 @@ const Calendar = ({ selectedWeek, onWeekChange, onReturn }) => {
   const [taskTime, setTaskTime] = useState("09:00");
   const [taskToEdit, setTaskToEdit] = useState(null);
 
-  // Save tasks to localStorage whenever they change
+  useEffect(() => {
+    const savedTasks = localStorage.getItem('calendar-tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('calendar-tasks', JSON.stringify(tasks));
   }, [tasks]);
@@ -54,7 +59,6 @@ const Calendar = ({ selectedWeek, onWeekChange, onReturn }) => {
           { text: taskInput, time: taskTime },
         ],
       };
-      // Sort tasks by time
       updatedTasks[currentTaskDay.toLocaleDateString()].sort((a, b) => 
         a.time.localeCompare(b.time)
       );
@@ -74,7 +78,6 @@ const Calendar = ({ selectedWeek, onWeekChange, onReturn }) => {
           (_, i) => i !== index
         ),
       };
-      // Remove empty arrays
       if (updatedTasks[day.toLocaleDateString()].length === 0) {
         delete updatedTasks[day.toLocaleDateString()];
       }
