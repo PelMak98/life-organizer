@@ -1,4 +1,3 @@
-// src/components/Workout.jsx
 import React, { useState, useEffect } from 'react';
 import { 
     FaArrowLeft, 
@@ -96,6 +95,16 @@ const Workout = ({ onReturn }) => {
                     <div className="subscription-info">
                         <span className="sessions-left">{subscriptions.cardio}</span>
                         <span className="label">Cardio Sessions</span>
+                        <input 
+                            type="number" 
+                            value={subscriptions.cardio}
+                            onChange={(e) => setSubscriptions(prev => ({
+                                ...prev,
+                                cardio: parseInt(e.target.value) || 0
+                            }))}
+                            min="0"
+                            className="sessions-input"
+                        />
                     </div>
                 </div>
                 <div className="subscription-card">
@@ -103,6 +112,16 @@ const Workout = ({ onReturn }) => {
                     <div className="subscription-info">
                         <span className="sessions-left">{subscriptions.weights}</span>
                         <span className="label">Weight Sessions</span>
+                        <input 
+                            type="number" 
+                            value={subscriptions.weights}
+                            onChange={(e) => setSubscriptions(prev => ({
+                                ...prev,
+                                weights: parseInt(e.target.value) || 0
+                            }))}
+                            min="0"
+                            className="sessions-input"
+                        />
                     </div>
                 </div>
             </div>

@@ -67,6 +67,7 @@
     background-color: #36454F;
     color: #FFFF00;
     border-radius: 8px;
+    border: 2px solid #FFFF00;
 }
 
 .subscription-card svg {
@@ -86,6 +87,18 @@
 .label {
     font-size: 14px;
     opacity: 0.8;
+}
+
+.sessions-input {
+    width: 60px;
+    padding: 4px;
+    margin-top: 8px;
+    background-color: #FFFF00;
+    color: #36454F;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
 }
 
 .workouts-list {
@@ -173,7 +186,7 @@
     color: #FFFF00;
 }
 
-.modal-overlay {
+.workout-container .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -186,87 +199,88 @@
     z-index: 2000;
 }
 
-.modal-wrapper {
-    background-color: #36454F !important;
+.workout-container .modal-wrapper {
+    background-color: #FFFF00 !important;
     width: 90%;
     max-width: 440px;
     border-radius: 8px;
+    border: 2px solid #36454F;
 }
 
-.modal-content {
-    background-color: #36454F !important;
+.workout-container .modal-content {
+    background-color: #FFFF00 !important;
 }
 
-.modal-header {
+.workout-container .modal-header {
     padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 0, 0.1);
+    border-bottom: 1px solid #36454F;
 }
 
-.modal-header h2 {
-    color: #FFFF00;
+.workout-container .modal-header h2 {
+    color: #36454F;
     margin: 0;
     font-size: 1.5rem;
 }
 
-.modal-content form {
+.workout-container .modal-content form {
     padding: 20px;
-    background-color: #36454F !important;
+    background-color: #FFFF00 !important;
 }
 
-.form-group {
+.workout-container .form-group {
     margin-bottom: 15px;
     position: relative;
 }
 
-.form-group input {
+.workout-container .form-group input {
     width: 100%;
     padding: 12px;
-    border: none;
+    border: 2px solid #36454F !important;
     border-radius: 4px;
-    background-color: #FFFF00;
-    color: #36454F;
+    background-color: #FFFF00 !important;
+    color: #36454F !important;
     font-size: 16px;
 }
 
-.form-group input::placeholder {
+.workout-container .form-group input::placeholder {
     color: #36454F;
     opacity: 0.7;
 }
 
-.type-switch {
+.workout-container .type-switch {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.switch-option {
+.workout-container .switch-option {
     flex: 1;
     padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: rgba(255, 255, 0, 0.1);
-    border: 1px solid #FFFF00;
-    color: #FFFF00;
+    background-color: #FFFF00 !important;
+    border: 2px solid #36454F !important;
+    color: #36454F !important;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
 }
 
-.switch-option.active {
-    background-color: #FFFF00;
-    color: #36454F;
+.workout-container .switch-option.active {
+    background-color: #36454F !important;
+    color: #FFFF00 !important;
 }
 
-.form-buttons {
+.workout-container .form-buttons {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-.primary-button,
-.secondary-button {
+.workout-container .primary-button,
+.workout-container .secondary-button {
     flex: 1;
     padding: 12px;
     border-radius: 4px;
@@ -274,16 +288,16 @@
     font-size: 16px;
 }
 
-.primary-button {
-    background-color: #FFFF00;
-    color: #36454F;
+.workout-container .primary-button {
+    background-color: #36454F;
+    color: #FFFF00;
     border: none;
 }
 
-.secondary-button {
-    background-color: transparent;
-    color: #FFFF00;
-    border: 1px solid #FFFF00;
+.workout-container .secondary-button {
+    background-color: #FFFF00;
+    color: #36454F;
+    border: 2px solid #36454F;
 }
 
 @media (max-width: 768px) {
