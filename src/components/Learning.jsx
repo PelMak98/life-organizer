@@ -17,13 +17,14 @@ const Learning = ({ onReturn }) => {
     });
 
     const platforms = [
-        { id: 'udemy', name: 'Udemy', image: 'public/assets/platforms/udemy.png' },
-        { id: 'coursera', name: 'Coursera', image: 'public/assets/platforms/coursera.png' },
-        { id: 'edx', name: 'edX', image: 'public/assets/platforms/edx.png' },
-        { id: 'domestika', name: 'Domestika', image: 'public/assets/platforms/domestika.png' },
-        { id: 'pluralsight', name: 'Pluralsight', image: 'public/assets/platforms/pluralsight.png' },
-        { id: 'linkedin', name: 'LinkedIn Learning', image: 'public/assets/platforms/linkedin.png' }
+        { id: 'udemy', name: 'Udemy', image: '/assets/platforms/udemy.png' },
+        { id: 'coursera', name: 'Coursera', image: '/assets/platforms/coursera.png' },
+        { id: 'edx', name: 'edX', image: '/assets/platforms/edx.png' },
+        { id: 'domestika', name: 'Domestika', image: '/assets/platforms/domestika.png' },
+        { id: 'pluralsight', name: 'Pluralsight', image: '/assets/platforms/pluralsight.png' },
+        { id: 'linkedin', name: 'LinkedIn Learning', image: '/assets/platforms/linkedin.png' }
     ];
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
