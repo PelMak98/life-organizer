@@ -1,4 +1,4 @@
-/* Scrollbar styling */
+/* learning.css */
 div.learning-container ::-webkit-scrollbar {
     width: 10px;
 }
@@ -18,7 +18,6 @@ div.learning-container ::-webkit-scrollbar-thumb:hover {
     background: #840019;
 }
 
-/* Base container */
 div.learning-container {
     min-height: 100vh;
     width: 100vw;
@@ -29,7 +28,6 @@ div.learning-container {
     left: 0;
 }
 
-/* Header */
 div.learning-container header.learning-header {
     display: flex;
     align-items: center;
@@ -85,7 +83,6 @@ div.learning-container header.learning-header div.header-actions button.add-butt
     border-color: #DADADA;
 }
 
-/* Controls section */
 div.learning-container div.controls {
     position: fixed;
     top: 80px;
@@ -124,7 +121,6 @@ div.learning-container div.controls div.search-bar input {
     background-color: #DADADA;
 }
 
-/* Courses grid */
 div.learning-container div.courses-grid {
     padding: 160px 20px 20px 20px;
     display: flex;
@@ -171,24 +167,62 @@ div.learning-container div.courses-grid div.course-card div.course-content div.c
     color: #DADADA;
 }
 
-/* Platform badge - Updated */
+/* Platform badge - Updated for text */
 div.learning-container div.courses-grid div.course-card div.course-content div.platform-badge {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid #DADADA;
-    overflow: hidden;
+    min-width: 120px;
+    height: 40px;
+    background-color: #DADADA;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #DADADA;
+    padding: 0 15px;
 }
 
-div.learning-container div.courses-grid div.course-card div.course-content div.platform-badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 4px;
+div.learning-container div.courses-grid div.course-card div.course-content div.platform-badge .platform-text {
+    color: #A50021;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Platform selector - Updated for text buttons */
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option {
+    background-color: #DADADA;
+    border: 2px solid #A50021;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option .platform-name {
+    color: #A50021;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected {
+    background-color: #A50021;
+    border-color: #DADADA;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected .platform-name {
+    color: #DADADA;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option:hover {
+    transform: scale(1.02);
 }
 
 /* Progress Tracker */
@@ -341,58 +375,6 @@ div.learning-container div.modal-overlay div.modal-content form div.form-group i
     opacity: 0.7;
 }
 
-/* Platform selector - Updated */
-div.learning-container div.modal-overlay div.modal-content form div.platform-selector {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 20px 0;
-    background-color: #A50021;
-}
-
-div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option {
-    background-color: #DADADA;
-    aspect-ratio: 1;
-    border-radius: 4px;
-    border: 2px solid #A50021;
-    cursor: pointer;
-    padding: 8px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected {
-    border: 2px solid #DADADA;
-    background-color: #A50021;
-}
-
-div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: #DADADA;
-    color: #A50021;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* Form buttons */
 div.learning-container div.modal-overlay div.modal-content form div.form-buttons {
     display: flex;
     gap: 10px;
@@ -429,7 +411,6 @@ div.learning-container div.modal-overlay div.modal-content form div.form-buttons
     color: #A50021;
 }
 
-/* Media queries */
 @media (max-width: 768px) {
     div.learning-container div.courses-grid div.course-card div.course-content {
         flex-direction: column;

@@ -1,11 +1,6 @@
+// Learning.jsx
 import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaPlus, FaSearch, FaEdit, FaTrash, FaClock } from "react-icons/fa";
-import udemy from '../../src/assets/platforms/udemy.png';
-import coursera from '../../src/assets/platforms/coursera.png';
-import edx from '../../src/assets/platforms/edx.png';
-import domestika from '../../src/assets/platforms/domestika.png';
-import pluralsight from '../../src/assets/platforms/pluralsight.png';
-import linkedin from '../../src/assets/platforms/linkedin.png';
 import "../styles/learning.css";
 
 const Learning = ({ onReturn }) => {
@@ -23,12 +18,12 @@ const Learning = ({ onReturn }) => {
     });
 
     const platforms = [
-        { id: 'udemy', name: 'Udemy', image: udemy },
-        { id: 'coursera', name: 'Coursera', image: coursera },
-        { id: 'edx', name: 'edX', image: edx },
-        { id: 'domestika', name: 'Domestika', image: domestika },
-        { id: 'pluralsight', name: 'Pluralsight', image: pluralsight },
-        { id: 'linkedin', name: 'LinkedIn Learning', image: linkedin }
+        { id: 'udemy', name: 'Udemy' },
+        { id: 'coursera', name: 'Coursera' },
+        { id: 'edx', name: 'edX' },
+        { id: 'domestika', name: 'Domestika' },
+        { id: 'pluralsight', name: 'Pluralsight' },
+        { id: 'linkedin', name: 'LinkedIn Learning' }
     ];
 
     const handleSubmit = (e) => {
@@ -104,10 +99,9 @@ const Learning = ({ onReturn }) => {
                         <div key={course.id} className="course-card">
                             <div className="course-content">
                                 <div className="platform-badge">
-                                    <img 
-                                        src={platforms.find(p => p.id === course.platform)?.image} 
-                                        alt={course.platform}
-                                    />
+                                    <span className="platform-text">
+                                        {platforms.find(p => p.id === course.platform)?.name}
+                                    </span>
                                 </div>
                                 <div className="course-main-info">
                                     <h3>{course.title}</h3>
@@ -178,7 +172,7 @@ const Learning = ({ onReturn }) => {
                                         className={`platform-option ${formData.platform === platform.id ? 'selected' : ''}`}
                                         onClick={() => handlePlatformSelect(platform.id)}
                                     >
-                                        <img src={platform.image} alt={platform.name} />
+                                        <span className="platform-name">{platform.name}</span>
                                     </button>
                                 ))}
                             </div>
