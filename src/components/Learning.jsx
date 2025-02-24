@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaPlus, FaSearch, FaEdit, FaTrash, FaClock } from "react-icons/fa";
+import udemy from '../../src/assets/platforms/udemy.png';
+import coursera from '../../src/assets/platforms/coursera.png';
+import edx from '../../src/assets/platforms/edx.png';
+import domestika from '../../src/assets/platforms/domestika.png';
+import pluralsight from '../../src/assets/platforms/pluralsight.png';
+import linkedin from '../../src/assets/platforms/linkedin.png';
 import "../styles/learning.css";
 
 const Learning = ({ onReturn }) => {
@@ -17,14 +23,14 @@ const Learning = ({ onReturn }) => {
     });
 
     const platforms = [
-        { id: 'udemy', name: 'Udemy', image: '/src/assets/platforms/udemy.png' },
-        { id: 'coursera', name: 'Coursera', image: '/src/assets/platforms/coursera.png' },
-        { id: 'edx', name: 'edX', image: '/src/assets/platforms/edx.png' },
-        { id: 'domestika', name: 'Domestika', image: '/src/assets/platforms/domestika.png' },
-        { id: 'pluralsight', name: 'Pluralsight', image: '/src/assets/platforms/pluralsight.png' },
-        { id: 'linkedin', name: 'LinkedIn Learning', image: '/src/assets/platforms/linkedin.png' }
+        { id: 'udemy', name: 'Udemy', image: udemy },
+        { id: 'coursera', name: 'Coursera', image: coursera },
+        { id: 'edx', name: 'edX', image: edx },
+        { id: 'domestika', name: 'Domestika', image: domestika },
+        { id: 'pluralsight', name: 'Pluralsight', image: pluralsight },
+        { id: 'linkedin', name: 'LinkedIn Learning', image: linkedin }
     ];
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (editingCourse) {
