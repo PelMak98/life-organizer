@@ -1,35 +1,36 @@
-/* src/styles/learning.css */
 /* Scrollbar styling */
-::-webkit-scrollbar {
+div.learning-container ::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-track {
+div.learning-container ::-webkit-scrollbar-track {
     background: #DADADA;
     border: 1px solid #A50021;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb {
+div.learning-container ::-webkit-scrollbar-thumb {
     background: #A50021;
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+div.learning-container ::-webkit-scrollbar-thumb:hover {
     background: #840019;
 }
 
-.learning-container {
+/* Base container */
+div.learning-container {
     min-height: 100vh;
     width: 100vw;
-    background-color: #DADADA;
-    color: #A50021;
+    background-color: #A50021;
+    color: #DADADA;
     position: fixed;
     top: 0;
     left: 0;
 }
 
-.learning-header {
+/* Header */
+div.learning-container header.learning-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,7 +43,7 @@
     z-index: 1000;
 }
 
-.back-button {
+div.learning-container header.learning-header button.back-button {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -55,12 +56,12 @@
     font-size: 16px;
 }
 
-.header-actions {
+div.learning-container header.learning-header div.header-actions {
     display: flex;
     gap: 10px;
 }
 
-.add-button {
+div.learning-container header.learning-header div.header-actions button.add-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,32 +79,33 @@
     transition: all 0.2s ease;
 }
 
-.add-button:hover {
+div.learning-container header.learning-header div.header-actions button.add-button:hover {
     background-color: #A50021;
     color: #DADADA;
     border-color: #DADADA;
 }
 
-.controls {
+/* Controls section */
+div.learning-container div.controls {
     position: fixed;
     top: 80px;
     left: 0;
     right: 0;
     padding: 20px;
-    background-color: #DADADA;
-    border-bottom: 1px solid #A50021;
+    background-color: #A50021;
+    border-bottom: 2px solid #DADADA;
     z-index: 999;
     display: flex;
     gap: 20px;
     align-items: center;
 }
 
-.search-bar {
+div.learning-container div.controls div.search-bar {
     flex: 1;
     position: relative;
 }
 
-.search-bar svg {
+div.learning-container div.controls div.search-bar svg {
     position: absolute;
     left: 12px;
     top: 50%;
@@ -112,17 +114,18 @@
     opacity: 0.7;
 }
 
-.search-bar input {
+div.learning-container div.controls div.search-bar input {
     width: 100%;
     padding: 12px 12px 12px 40px;
-    border: 1px solid #A50021;
+    border: 2px solid #A50021;
     border-radius: 4px;
     font-size: 16px;
     color: #A50021;
     background-color: #DADADA;
 }
 
-.courses-grid {
+/* Courses grid */
+div.learning-container div.courses-grid {
     padding: 160px 20px 20px 20px;
     display: flex;
     flex-direction: column;
@@ -131,432 +134,325 @@
     height: 100vh;
 }
 
-.course-card {
-    background-color: #DADADA;
-    color: #A50021;
-    border: 1px solid #A50021;
+div.learning-container div.courses-grid div.course-card {
+    background-color: #A50021;
+    color: #DADADA;
+    border: 2px solid #DADADA;
     border-radius: 8px;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
 }
 
-.course-content {
+div.learning-container div.courses-grid div.course-card div.course-content {
     display: flex;
     flex: 1;
     gap: 30px;
     align-items: center;
 }
 
-.course-main-info {
+div.learning-container div.courses-grid div.course-card div.course-content div.course-main-info {
     flex: 1;
 }
 
-.course-main-info h3 {
+div.learning-container div.courses-grid div.course-card div.course-content div.course-main-info h3 {
     margin: 0;
     font-size: 20px;
+    color: #DADADA;
 }
 
-.course-meta {
+div.learning-container div.courses-grid div.course-card div.course-content div.course-meta {
     display: flex;
     align-items: center;
     gap: 15px;
     font-size: 14px;
     margin: 10px 0;
-}
-
-.platform-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 16px;
     color: #DADADA;
-    margin-top: 10px;
 }
 
-.platform-badge img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
-
-.progress-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 15px;
-    background-color: rgba(165, 0, 33, 0.05);
-    border-radius: 8px;
-    min-width: 300px;
-}
-
-.circular-progress {
-    width: 80px;
-    height: 80px;
-    position: relative;
-}
-
-.progress-circle {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.progress-inner {
+/* Platform badge - Updated */
+div.learning-container div.courses-grid div.course-card div.course-content div.platform-badge {
     width: 60px;
     height: 60px;
-    background-color: #DADADA;
     border-radius: 50%;
+    border: 2px solid #DADADA;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #DADADA;
 }
 
-.progress-value {
-    color: #A50021;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.progress-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.hours-counter {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
-}
-
-.hours-counter .completed {
-    color: #A50021;
-    font-weight: bold;
-}
-
-.hours-counter .separator {
-    color: #A50021;
-    opacity: 0.5;
-}
-
-.hours-counter .total {
-    color: #A50021;
-    opacity: 0.7;
-}
-
-.hours-slider {
-    -webkit-appearance: none;
+div.learning-container div.courses-grid div.course-card div.course-content div.platform-badge img {
     width: 100%;
-    height: 4px;
-    background: #DADADA;
-    border: 1px solid #A50021;
-    border-radius: 2px;
-    outline: none;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
 }
 
-.hours-slider::-webkit-slider-thumb {
+/* Progress Tracker */
+div.learning-container div.courses-grid div.course-card div.progress-tracker {
+    position: relative;
+    margin-top: 15px;
+    padding: 10px 0;
+}
+
+div.learning-container div.courses-grid div.course-card div.progress-tracker .progress-bar {
+    position: absolute;
+    height: 8px;
+    background-color: #DADADA;
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: width 0.3s ease;
+}
+
+div.learning-container div.courses-grid div.course-card div.progress-tracker input[type="range"] {
+    width: 100%;
+    background: transparent;
     -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #A50021;
+    position: relative;
+    z-index: 2;
+}
+
+div.learning-container div.courses-grid div.course-card div.progress-tracker input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
+    background: #DADADA;
     cursor: pointer;
-    transition: all 0.2s ease;
+    border: 2px solid #A50021;
+    margin-top: -6px;
 }
 
-.hours-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+div.learning-container div.courses-grid div.course-card div.progress-tracker input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: rgba(218, 218, 218, 0.2);
+    border-radius: 4px;
+    border: 2px solid #DADADA;
 }
 
-.course-actions {
+div.learning-container div.courses-grid div.course-card div.progress-tracker .progress-text {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    color: #DADADA;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Course Actions */
+div.learning-container div.courses-grid div.course-card div.course-actions {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin-left: 20px;
 }
 
-.edit-button,
-.delete-button {
-    width: 45px;
-    height: 45px;
-    border-radius: 4px;
-    background-color: #A50021;
-    border: none;
+div.learning-container div.courses-grid div.course-card div.course-actions button {
+    background: none;
+    border: 2px solid #DADADA;
     color: #DADADA;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    transition: all 0.2s ease;
 }
 
-.modal-overlay {
+div.learning-container div.courses-grid div.course-card div.course-actions button:hover {
+    background-color: #DADADA;
+    color: #A50021;
+}
+
+/* Hours info */
+div.learning-container div.courses-grid div.course-card div.course-content div.course-meta .hours-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background-color: rgba(218, 218, 218, 0.1);
+    border-radius: 4px;
+    border: 2px solid #DADADA;
+}
+
+/* Modal styles */
+div.learning-container div.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(165, 0, 33, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
 
-.modal-content {
+div.learning-container div.modal-overlay div.modal-content {
     background-color: #A50021;
+    border: 2px solid #DADADA;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
     overflow: hidden;
     max-height: 90vh;
     overflow-y: auto;
-}
-
-.modal-header {
     padding: 20px;
-    border-bottom: 1px solid rgba(218, 218, 218, 0.1);
 }
 
-.modal-header h2 {
+div.learning-container div.modal-overlay div.modal-content div.modal-header {
+    padding: 20px;
+    border-bottom: 2px solid #DADADA;
+}
+
+div.learning-container div.modal-overlay div.modal-content div.modal-header h2 {
     color: #DADADA;
     margin: 0;
     font-size: 1.5rem;
 }
 
-.modal-content form {
+div.learning-container div.modal-overlay div.modal-content form {
     padding: 20px;
+    background-color: #A50021;
 }
 
-.form-group {
+div.learning-container div.modal-overlay div.modal-content form div.form-group {
     margin-bottom: 15px;
 }
 
-.form-group input {
+div.learning-container div.modal-overlay div.modal-content form div.form-group input {
     width: 100%;
     padding: 12px;
-    border: none;
+    border: 2px solid #A50021;
     border-radius: 4px;
     background-color: #DADADA;
     color: #A50021;
     font-size: 16px;
 }
 
-.form-group input::placeholder {
+div.learning-container div.modal-overlay div.modal-content form div.form-group input::placeholder {
     color: #A50021;
     opacity: 0.7;
 }
 
-.platform-selector {
+/* Platform selector - Updated */
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0;
-    margin-bottom: 20px;
-}
-
-.platform-option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #DADADA;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.platform-option img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-
-.platform-option span,
-.platform-option .check-icon {
-    display: none;
-}
-
-.platform-option.selected {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
     background-color: #A50021;
 }
 
-.hours-input-container {
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option {
     background-color: #DADADA;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.hours-display {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 2px solid #A50021;
+    cursor: pointer;
+    padding: 8px;
+    overflow: hidden;
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 10px;
-    font-size: 18px;
+    justify-content: center;
 }
 
-.completed-hours {
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected {
+    border: 2px solid #DADADA;
+    background-color: #A50021;
+}
+
+div.learning-container div.modal-overlay div.modal-content form div.platform-selector button.platform-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #DADADA;
     color: #A50021;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.separator {
-    color: #A50021;
-    opacity: 0.5;
-}
-
-.total-hours {
-    color: #A50021;
-    opacity: 0.7;
-}
-
-.hours-label {
-    margin-left: auto;
-    font-size: 14px;
-    color: #A50021;
-    opacity: 0.7;
-}
-
-.form-buttons {
+/* Form buttons */
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-.primary-button,
-.secondary-button {
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons button {
     flex: 1;
     padding: 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    border: 2px solid #DADADA;
     transition: all 0.2s ease;
 }
 
-.primary-button {
-    background-color: #A50021;
-    color: #DADADA;
-    border: none;
-}
-
-.secondary-button {
-    background-color: transparent;
-    color: #DADADA;
-    border: 1px solid #DADADA;
-}
-
-.primary-button:hover {
-    background-color: transparent;
-    color: #DADADA;
-    border: 1px solid #DADADA;
-}
-
-.secondary-button:hover {
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons button.primary-button {
     background-color: #DADADA;
     color: #A50021;
 }
 
-.primary-button:disabled,
-.secondary-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.confirm-dialog {
-    padding: 20px;
-    text-align: center;
-}
-
-.confirm-dialog h2 {
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons button.secondary-button {
+    background-color: transparent;
     color: #DADADA;
-    margin: 0 0 15px 0;
 }
 
-.confirm-dialog p {
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons button.primary-button:hover {
+    background-color: #A50021;
     color: #DADADA;
-    margin: 0 0 20px 0;
 }
 
-.delete-confirm:hover {
+div.learning-container div.modal-overlay div.modal-content form div.form-buttons button.secondary-button:hover {
     background-color: #DADADA;
     color: #A50021;
 }
 
-.error-message {
-    position: fixed;
-    top: 100px;
-    right: 20px;
-    padding: 15px 20px;
-    background-color: #A50021;
-    color: #DADADA;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 1001;
-    animation: slideIn 0.3s ease-out;
-}
-
-.error-message button {
-    background: none;
-    border: none;
-    color: #DADADA;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
+/* Media queries */
 @media (max-width: 768px) {
-    .course-content {
+    div.learning-container div.courses-grid div.course-card div.course-content {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .progress-section {
-        min-width: auto;
+    div.learning-container div.modal-overlay div.modal-content form div.platform-selector {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .platform-selector {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .platform-option {
-        padding: 15px;
-    }
-
-    .platform-option img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .course-actions {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        margin: 0;
-    }
-
-    .modal-content {
+    div.learning-container div.modal-overlay div.modal-content {
         width: 95%;
         margin: 10px;
+    }
+    
+    div.learning-container div.courses-grid div.course-card {
+        padding: 20px;
+    }
+    
+    div.learning-container div.courses-grid div.course-card div.course-actions {
+        flex-direction: row;
+        margin-left: 0;
+        margin-top: 15px;
+        justify-content: flex-end;
     }
 }
